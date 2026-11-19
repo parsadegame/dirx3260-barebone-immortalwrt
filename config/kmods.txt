@@ -1,0 +1,96 @@
+# Kernel modules baked into the barebone image.
+#
+# Why these and nothing else: kmod-* packages are locked to the kernel by
+# vermagic (6.18.44 SMP mod_unload aarch64). They cannot be fetched with apk
+# later -- a module from the feed is built for a different kernel and will not
+# load. Everything userspace (openclash, passwall, mwan3, sqm, wol and their
+# cores) IS installable later, so it is deliberately left out.
+#
+# This list is identical to the 76 kmods in the hardware-validated v4 image,
+# which already carried openclash + mwan3 + sqm. Format: <package>  # reason
+#
+# ---- Wi-Fi / WPA3: dependencies of mac80211, needed by the radios ----------
+kmod-crypto-aead
+kmod-crypto-ccm
+kmod-crypto-cmac
+kmod-crypto-ctr
+kmod-crypto-gcm
+kmod-crypto-geniv
+kmod-crypto-gf128
+kmod-crypto-ghash
+kmod-crypto-hash
+kmod-crypto-hmac
+kmod-crypto-manager
+kmod-crypto-null
+kmod-crypto-rng
+kmod-crypto-seqiv
+kmod-crypto-sha1
+kmod-crypto-sha3
+kmod-crypto-sha512
+# ---- radios ---------------------------------------------------------------
+kmod-cfg80211
+kmod-mac80211
+kmod-mt76-core
+kmod-mt76-connac
+kmod-mt7615-common
+kmod-mt7615e
+kmod-mt7915e
+kmod-mt7915-firmware
+kmod-mt7622-firmware
+# ---- platform / board -----------------------------------------------------
+kmod-gpio-button-hotplug
+kmod-leds-gpio
+kmod-hwmon-core
+kmod-i2c-core
+kmod-thermal
+kmod-lib-crc-ccitt
+# ---- WAN PPPoE ------------------------------------------------------------
+kmod-ppp
+kmod-pppox
+kmod-pppoe
+kmod-mppe
+kmod-slhc
+# ---- netfilter core (firewall4, and the base of every proxy app) ----------
+kmod-nfnetlink
+kmod-nf-conntrack
+kmod-nf-conntrack-netlink
+kmod-nf-flow
+kmod-nf-ipt
+kmod-nf-ipt6
+kmod-nf-log
+kmod-nf-log6
+kmod-nf-nat
+kmod-nf-reject
+kmod-nf-reject6
+kmod-nf-socket
+kmod-nf-tproxy
+kmod-nf-conncount
+kmod-nft-core
+kmod-nft-compat
+kmod-nft-fib
+kmod-nft-nat
+kmod-nft-offload
+kmod-nft-fullcone
+kmod-nft-socket
+kmod-nft-tproxy
+# ---- iptables/ipset back end (mwan3 is still iptables based) --------------
+kmod-iptables
+kmod-ip6tables
+kmod-ipt-core
+kmod-ipt-conntrack
+kmod-ipt-conntrack-extra
+kmod-ipt-ipopt
+kmod-ipt-ipset
+# ---- qdiscs for SQM (cake + shaping) --------------------------------------
+kmod-sched-core
+kmod-sched-cake
+kmod-ifb
+kmod-sched-act-vlan
+kmod-sched-bpf
+kmod-sched-flower
+# ---- tunnels / sockets for OpenClash (TUN + inet_diag) --------------------
+kmod-tun
+kmod-inet-diag
+kmod-netlink-diag
+# ---- misc used by multi-wan / proxy setups --------------------------------
+kmod-macvlan

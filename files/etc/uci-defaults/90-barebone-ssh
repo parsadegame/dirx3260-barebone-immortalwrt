@@ -1,0 +1,16 @@
+#!/bin/sh
+# barebone: guarantee SSH is reachable on a fresh flash.
+# The shipped dropbear config is a single instance pinned to the LAN device
+# (_direct / DirectInterface 'lan'), which leaves no listener at all before
+# that device is up. Replace it with a stock config -- but only when that
+# pinning is what is there, so a user's own settings are never clobbered.
+grep -q "_direct\|DirectInterface" /etc/config/dropbear 2>/dev/null || exit 0
+cat > /etc/config/dropbear <<'CFG'
+config dropbear
+	option enable '1'
+	option Port '22'
+	option PasswordAuth 'on'
+	option RootPasswordAuth 'on'
+CFG
+/etc/init.d/dropbear restart >/dev/null 2>&1
+exit 0

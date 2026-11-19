@@ -1,0 +1,17 @@
+#!/bin/sh
+# barebone: give root a known password on a fresh flash.
+# dropbear refuses password logins while the root password is empty, which is
+# why a freshly flashed image answers on 22 but never lets anyone in.
+# Only an *empty* root password is replaced -- an existing one is left alone.
+# Change it right after the first login:  passwd
+[ -f /etc/shadow ] || exit 0
+HASH='$6$barebone$Lq4ShX4O89dk.QwU6lTETI4y1xt3NDUcd8PQnp.rVu81BvwXoBp43hkqYVar2s13MOxPyoRpwy.jfEZW3tr4C0'
+CUR=$(grep '^root:' /etc/shadow | cut -d: -f2)
+[ -z "$CUR" ] || exit 0
+{
+	printf 'root:%s:0:0:99999:7:::\n' "$HASH"
+	grep -v '^root:' /etc/shadow
+} > /tmp/.shadow.new
+cat /tmp/.shadow.new > /etc/shadow
+rm -f /tmp/.shadow.new
+exit 0

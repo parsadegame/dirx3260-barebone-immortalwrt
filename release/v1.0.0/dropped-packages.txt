@@ -1,0 +1,70 @@
+# Packages turned off relative to BUILD-KIT/config/config.txt (the v4 build).
+# Every one of them is pure userspace and can be installed again with apk.
+# Grouped by why it was dropped.
+
+# the apps themselves (install later with apk)
+luci-app-openclash
+luci-app-passwall
+luci-app-mwan3
+luci-app-sqm
+luci-app-upnp
+luci-app-wol
+mwan3
+sqm-scripts
+miniupnpd-nftables
+etherwake
+luci-app-rclone_INCLUDE_rclone-ng
+luci-app-rclone_INCLUDE_rclone-webui
+
+# runtime only openclash / passwall needed
+bash
+libreadline
+libncurses
+terminfo
+coreutils
+coreutils-base64
+coreutils-nohup
+coreutils-timeout
+curl
+libcurl
+libnghttp2
+unzip
+ruby
+libruby
+ruby-bigdecimal
+ruby-date
+ruby-digest
+ruby-enc
+ruby-pstore
+ruby-psych
+ruby-stringio
+ruby-yaml
+lyaml
+libyaml
+microsocks
+resolveip
+shellsync
+
+# runtime only mwan3 / sqm needed (the *kmods* stay in the image)
+ipset
+libipset
+iptables-nft
+ip6tables-nft
+xtables-nft
+iptables-mod-conntrack-extra
+iptables-mod-ipopt
+libiptext
+libiptext-nft
+libiptext6
+tc-tiny
+
+# themes/translations for the dropped apps
+luci-theme-argon
+luci-i18n-mwan3-zh-cn
+luci-i18n-sqm-zh-cn
+luci-i18n-upnp-zh-cn
+luci-i18n-wol-zh-cn
+luci-i18n-package-manager-zh-cn
+
+# left out with microsocks (was the only consumer)
+libev

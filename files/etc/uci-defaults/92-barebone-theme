@@ -1,0 +1,9 @@
+#!/bin/sh
+# barebone: argon is the default LuCI theme, as in the original v4 build.
+# The theme package ships its own uci-defaults; this one only makes sure the
+# setting survives when that script is outrun by an older /etc/config/luci.
+[ -x /sbin/uci ] || exit 0
+uci -q get luci.main >/dev/null 2>&1 || exit 0
+uci -q set luci.main.mediaurlbase='/luci-static/argon'
+uci -q commit luci
+exit 0

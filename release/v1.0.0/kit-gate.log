@@ -1,0 +1,21 @@
+== image ==
+  file   /mnt/c/Users/Parsa/Desktop/Opencode/dist/barebone-20261104-argon/immortalwrt-mediatek-mt7622-dlink_dir-x3260-a1-squashfs-sysupgrade.bin
+  size   14029071 bytes
+  sha256 62c98acbd4396ab349664f5f64c7c37a610a98d46612e97baa9c29091474feca
+  ..   sysupgrade tar, member: sysupgrade-dlink_dir-x3260-a1/root
+== contents ==
+  files  1268
+  bytes  29019048 (uncompressed)
+== boot gate ==
+  ok   /etc/inittab present, 106 bytes
+  ok   18 preinit scripts, all non-empty
+  ok   sbin/init 16649 bytes
+  ok   sbin/procd 97697 bytes
+  ok   sbin/ubusd 32962 bytes
+  ok   sbin/netifd 241075 bytes
+  ok   bin/busybox 425997 bytes
+  ok   /lib/ld-musl-aarch64.so.1 -> libc.so, 590852 bytes
+  ok   no unexpected zero-byte files (12 expected empties)
+== modules ==
+  ok   140 modules, single vermagic: 6.18.44 SMP mod_unload aarch64
+== RESULT: PASS -- safe to flash ==

@@ -1,0 +1,8 @@
+# firmware images belong in a release, not in git
+*.bin
+release/barebone-*/
+
+# build leftovers if you run the script inside this repo
+build-*.log
+defconfig.log
+.buildlog/

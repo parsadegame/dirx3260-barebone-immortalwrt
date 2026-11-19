@@ -1,0 +1,8 @@
+device   D-Link DIR-X3260 A1 (mediatek/mt7622, aarch64_cortex-a53)
+tree     /root/build/dirx3260
+head     no git
+built    2026-11-04T05:42:15Z
+kmods    76
+packages 210
+profile  barebone: base system + LuCI light + apk + kmods for openclash/passwall1/passwall2/mwan3/sqm/wol
+extras   luci-theme-argon default, dropbear on 22, first-boot root password 'root' (change it)
